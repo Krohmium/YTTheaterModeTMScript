@@ -13,7 +13,7 @@
 // ==/UserScript==
 
 (function() {
-
+    "use strict";
     GM_config.init(
         {
             'id': 'Youtube Theater Mode Max Size Settings', // The id used for this instance of GM_config
