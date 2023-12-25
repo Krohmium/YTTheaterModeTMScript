@@ -3,17 +3,18 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  Set the maximum size of Youtube video player in theater mode. Usefull if you player window is slightly bigger than a typical video resolution to prevent resampling. This might make your playback look more crisp.
-// @author       Paul Höfler
-// @match        https://www.youtube.com/watch?v=*
-// @icon         
+// @author       Paul Hoefler
+// @match        https://www.youtube.com/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @grant        GM_getValue
 // @grant        GM_setValue
+// @grant        GM_addStyle
 // @grant        GM_registerMenuCommand
 // @require      https://openuserjs.org/src/libs/sizzle/GM_config.js
 // ==/UserScript==
 
+
 (function() {
-    "use strict";
     GM_config.init(
         {
             'id': 'Youtube Theater Mode Max Size Settings', // The id used for this instance of GM_config
@@ -40,7 +41,7 @@
 
     function setMaxSize(theater, fullscreen) {
         const element = document.getElementsByClassName("html5-main-video")[0];
-        const outerElement = document.getElementById("player-theater-container");
+        const outerElement = document.getElementById("full-bleed-container");
         if(theater == true && ( fullscreen == false || fullscreen == undefined))
         {
             element.style.maxHeight = GM_config.get('maxHeight') + "px";
